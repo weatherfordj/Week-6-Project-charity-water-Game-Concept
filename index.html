@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Catch Streak: a quick game to build awareness for clean water projects." />
+  <title>Catch Streak 💧 | charity: water</title>
+
+  <!-- Optional: nicer social previews when students share -->
+  <meta property="og:title" content="Catch Streak 💧" />
+  <meta property="og:description" content="Catch droplets. Build a streak. Learn how clean water changes everything." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Accessibility: skip link -->
+  <a class="skip-link" href="#main">Skip to game</a>
+
+  <div class="app">
+    <!-- Header / HUD -->
+    <header class="hud" role="banner" aria-label="Game header and stats">
+      <img
+        class="brand__logo"
+        src="Charity Water Logo.jpg"
+        alt="charity: water"
+        width="280"
+        height="56"
+        loading="eager"
+      />
+
+      <div class="hud__brand">
+        <div class="brand__text">
+          <h1 class="title">Catch Streak <span aria-hidden="true">💧</span></h1>
+          <p class="subtitle">
+            Catch droplets. Build a streak. Boost your multiplier.
+            <span class="subtitle__note">A quick game to support clean water awareness.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <section class="hud__stats" aria-label="Game stats">
+        <div class="stat">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="stat">
+          <span>Streak</span>
+          <strong id="streak">0</strong>
+        </div>
+        <div class="stat">
+          <span>Multiplier</span>
+          <strong id="multiplier">x1</strong>
+        </div>
+        <div class="stat">
+          <span>Time</span>
+          <strong id="time">60</strong>
+        </div>
+        <div class="stat">
+          <span>Best</span>
+          <strong id="best">0</strong>
+        </div>
+      </section>
+
+      <!-- Actions -->
+      <nav class="hud__actions" aria-label="Game controls">
+        <button class="btn" id="startBtn" type="button">Start</button>
+        <button class="btn btn--ghost" id="restartBtn" type="button" disabled>Restart</button>
+
+        <!-- Brand-friendly CTAs: awareness + action -->
+        <a class="btn btn--ghost" href="https://www.charitywater.org/" target="_blank" rel="noopener">
+          Learn
+        </a>
+        <a class="btn btn--donate" href="https://www.charitywater.org/donate" target="_blank" rel="noopener">
+          Donate
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Game Area -->
+    <main id="main" class="stage" role="main" aria-label="Catch Streak game">
+      <!-- Canvas game -->
+      <canvas
+        id="game"
+        width="860"
+        height="420"
+        aria-label="Game canvas. Move the bucket left and right to catch droplets."
+      ></canvas>
+
+      <!-- Game Over overlay -->
+      <section id="overlay" class="overlay" hidden role="dialog" aria-modal="true" aria-label="Game over">
+        <div class="overlay__card">
+          <!-- Optional: place a small official icon here (no recolor) -->
+          <!-- <img src="img/jerrycan-icon.svg" alt="" class="overlay__icon" /> -->
+
+          <h2>Game Over</h2>
+
+          <p class="overlay__text">
+            Final Score: <strong id="finalScore">0</strong><br />
+            Best Score: <strong id="finalBest">0</strong>
+          </p>
+
+          <div class="overlay__actions">
+            <button class="btn" id="playAgainBtn" type="button">Play Again</button>
+            <button class="btn btn--ghost" id="copyBtn" type="button">Copy Score</button>
+          </div>
+
+          <!-- Keep copy hopeful + action-oriented -->
+          <p class="overlay__small">
+            Clean water changes everything.
+            <a href="https://www.charitywater.org/" target="_blank" rel="noopener">Learn more</a>
+            or
+            <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener">donate</a>.
+          </p>
+
+          <!-- Minimal notes area (optional) -->
+          <!--
+            Brand notes:
+            - Logo sits on a calm background with whitespace.
+            - Primary CTA uses brand accent color (yellow) in CSS.
+            - Links are direct to charity: water Learn + Donate.
+          -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p>
+        Controls: <kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> (mouse works too).
+        Bonus drops are worth more. Missing resets your streak.
+      </p>
+
+      <p class="footer__fineprint">
+        This fan-made student project is for awareness and learning.
+        Visit <a href="https://www.charitywater.org/" target="_blank" rel="noopener">www.charitywater.org/</a>.
+      </p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
