@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drop Catcher – charity: water</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== START SCREEN ===== -->
+  <div id="start-screen" class="overlay">
+    <div class="card">
+      <img src="https://www.charitywater.org/assets/images/logo-charity-water.svg"
+           alt="charity: water logo" class="cw-logo" onerror="this.style.display='none'" />
+      <h1 class="game-title">Drop Catcher</h1>
+      <p class="tagline">Help bring clean water to the world &mdash;<br>catch every drop!</p>
+      <p class="instructions">
+        Move your bucket with <strong>← →</strong> arrow keys<br>
+        or by dragging / touching the bucket.<br><br>
+        Catch as many water drops as possible.<br>
+        You get <strong>3 misses</strong> before the game ends.
+      </p>
+      <button id="start-btn" class="btn">Play Now</button>
+      <p class="cw-link">Learn more at <a href="https://www.charitywater.org" target="_blank" rel="noopener">charitywater.org</a></p>
+    </div>
+  </div>
+
+  <!-- ===== GAME OVER SCREEN ===== -->
+  <div id="gameover-screen" class="overlay hidden">
+    <div class="card">
+      <h1 class="game-title">Game Over</h1>
+      <p id="final-score-msg" class="tagline"></p>
+      <p class="cta-text">Every drop counts. Donate to bring clean water to those who need it most.</p>
+      <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener" class="btn btn-donate">Donate Now 💛</a>
+      <button id="restart-btn" class="btn btn-secondary">Play Again</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME AREA ===== -->
+  <div id="game-wrapper">
+    <div id="hud">
+      <div class="hud-item">Score: <span id="score-display">0</span></div>
+      <div class="hud-item lives-display" id="lives-display">
+        <span class="life">💧</span><span class="life">💧</span><span class="life">💧</span>
+      </div>
+      <div class="hud-item">Level: <span id="level-display">1</span></div>
+    </div>
+
+    <canvas id="game-canvas"></canvas>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
