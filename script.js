@@ -83,6 +83,20 @@
  };
   const droplets = [];
 
+  function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+
+  canvas.width = Math.round(rect.width * dpr);
+  canvas.height = Math.round((rect.width * 420 / 860) * dpr);
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.imageSmoothingEnabled = false;
+
+  bucket.y = (canvas.height / dpr) - 85;
+  bucket.x = clamp(bucket.x, 0, canvas.width / dpr - bucket.width);
+}
+
   function resetGame() {
     running = false;
     lastFrame = 0;
@@ -554,6 +568,23 @@ for (const d of droplets) {
     const mouseX = (e.clientX - rect.left) * scaleX;
     bucket.x = clamp(mouseX - bucket.width / 2, 0, canvas.width - bucket.width);
   });
+
+  // ---------- Touch controls (LevelUp: mobile play) ----------
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+}, { passive: false });
+
+canvas.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches[0];
+
+  const scaleX = canvas.width / rect.width;
+  const touchX = (touch.clientX - rect.left) * scaleX;
+
+  bucket.x = clamp(touchX - bucket.width / 2, 0, canvas.width - bucket.width);
+}, { passive: false });
 
   // Buttons
   startBtn.addEventListener("click", startGame);
